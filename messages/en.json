@@ -1,0 +1,45 @@
+{
+    "Sidebar": {
+      "Dashboard": "Dashboard",
+      "UsersManagement": "Users Management",
+      "OrdersManagement": "Orders Management",
+      "ProductsManagement": "Products Management"
+    },
+    "Dashboard": {
+      "Overview": "Overview",
+      "UpFrom": "Up from",
+      "DownFrom": "Down from",
+      "Yesterday": "yesterday",
+      "PastWeek": "past week",
+      "SalesDetail": "Sales Detail",
+      "BlogList":"Blog List",
+      "BlogName":"Blog Name",
+      "CreatedDate":"Created Date",
+      "Status":"Status"
+    },
+    "UsersManagement":{
+      "UsersManagement": "Users Management",
+      "ID": "ID",
+      "Name":"Name",
+      "CreatedAt":"Created At",
+      "Role":"Role",
+      "FirstName":"First Name",
+      "LastName":"Last Name",
+      "Email":"Email",
+      "Password":"Password",
+      "ConfirmPassword":"Confirm Password",
+      "PhoneNumber":"Phone Number",
+      "CreateUser":"Create User",
+      "ViewDetail":"View Detail",
+      "DeleteUser":"Delete User"
+    },
+    "Button":{
+      "Search": "Search...",
+      "Create": "Create",
+      "Edit": "Edit",
+      "Delete": "Delete",
+      "View": "View",
+      "OK": "OK",
+      "Cancel": "Cancel"
+    }
+}
