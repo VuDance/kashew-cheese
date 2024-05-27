@@ -6,9 +6,11 @@ import { useTranslations } from 'next-intl';
 
 interface SearchProps{
   onChange:(value:any) => void;
+  onOpenModal:()=>void,
+  disableCreate?:boolean
 }
 
-const Search = ({onChange}:SearchProps) => {
+const Search = ({onChange,onOpenModal,disableCreate}:SearchProps) => {
   const t = useTranslations("Button")
   return (
     <div className='flex justify-between'>
@@ -42,7 +44,7 @@ const Search = ({onChange}:SearchProps) => {
           </Select>
         </FormControl> */}
       </div>
-      <Button variant='outlined' className='normal-case text-white bg-blue-600'>Create</Button>
+      {!disableCreate &&<Button onClick={onOpenModal} variant='outlined' className='normal-case hover:bg-blue-500 text-white bg-blue-600'>Create</Button>}
     </div>
   )
 }

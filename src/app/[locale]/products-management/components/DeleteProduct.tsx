@@ -1,14 +1,14 @@
 import React from 'react'
 import ModalCrud from '../../components/ModalCrud'
 
-interface DeleteUserProps {
+interface DeleteProductProps {
     handleClose: () => void,
     open: boolean,
     handleDelete?: (data: any) => void,
     title: string,
 }
 
-const DeleteUser = ({ title, open, handleDelete, handleClose }: DeleteUserProps) => {
+const DeleteProduct = ({ title, open, handleDelete, handleClose }: DeleteProductProps) => {
   return (
     <ModalCrud isView={false} title={title} open={open} handleDelete={handleDelete} handleClose={handleClose}>
         <div>
@@ -18,4 +18,4 @@ const DeleteUser = ({ title, open, handleDelete, handleClose }: DeleteUserProps)
   )
 }
 
-export default DeleteUser
+export default DeleteProduct

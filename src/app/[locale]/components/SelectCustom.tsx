@@ -2,10 +2,11 @@ import { FormControl, MenuItem, Select } from '@mui/material'
 import React from 'react'
 
 interface SelectCustomProps{
-    option:any[]
+    option:any[],
+    defaultValue:string
 }
 
-const SelectCustom = ({option}:SelectCustomProps) => {
+const SelectCustom = ({option,defaultValue}:SelectCustomProps) => {
     return (
         <FormControl sx={{ m: 1, minWidth: 80, margin: 0,width:"100%" }}>
             <Select
@@ -27,7 +28,7 @@ const SelectCustom = ({option}:SelectCustomProps) => {
                 }}
             >
                 <MenuItem disabled value="">
-                    Select role
+                    {defaultValue}
                 </MenuItem>
                 {option.map(role =><MenuItem key={role.value} value={role.value}>{role.label}</MenuItem>)}
             </Select>

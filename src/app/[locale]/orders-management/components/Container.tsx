@@ -1,30 +1,28 @@
 "use client"
 import React, { useMemo, useState } from 'react'
 import TableData from '../../components/TableData'
-import { User } from '@/app/contants/types'
+import { Order } from '@/app/contants/types'
 import { Button, IconButton, Pagination, Popover, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import Search from '../../components/Search'
 import debounce from 'lodash.debounce';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddEditUser from './AddEditUser'
-import DeleteUser from './DeleteUser'
+import ViewOrder from './ViewOrder'
+
 
 interface ContainerProps {
-    data: User[]
+    data: Order[]
 }
 // const filterOptions=[]
 
 const Container = ({ data }: ContainerProps) => {
-    const t = useTranslations("UsersManagement")
+    const t = useTranslations("OrdersManagement")
     const b = useTranslations("Button")
     const [openModal,setOpenModal]=useState<boolean>(false)
     const [openDeleteModal,setOpenDeleteModal]=useState<boolean>(false)
     const [isView,setIsView]=useState<boolean>(false)
-    const columns: string[] = useMemo(() => ["ID", "Name", "CreatedAt", "Role"], [])
+    const columns: string[] = useMemo(() => ["ID", "Name", "Address", "Date","Status"], [])
     const handleChangeSearch = debounce((e) => {
         console.log('Input value:', e.target.value);
     }, 500);
@@ -63,7 +61,7 @@ const Container = ({ data }: ContainerProps) => {
     const open = Boolean(anchorEl);
     return (
         <div className='flex flex-col gap-3'>
-            <Search onOpenModal={handleOpenModal} onChange={handleChangeSearch} />
+            <Search disableCreate onOpenModal={handleOpenModal} onChange={handleChangeSearch} />
             <div className='bg-white'>
                 <TableData>
                     <TableHead>
@@ -82,8 +80,13 @@ const Container = ({ data }: ContainerProps) => {
                                     {row.id}
                                 </TableCell>
                                 <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.createdAt}</TableCell>
-                                <TableCell>{row.role}</TableCell>
+                                <TableCell>{row.address}</TableCell>
+                                <TableCell>{row.date}</TableCell>
+                                <TableCell>
+                                    {row.status==="Pending" && <span className='p-2 text-orange-500 rounded-md bg-orange-100'>{row.status}</span>}
+                                    {row.status==="Completed" && <span className='p-2 text-white rounded-md bg-green-400'>{row.status}</span>}
+                                    {row.status==="Rejected" && <span className='p-2 text-white rounded-md bg-red-400'>{row.status}</span>}
+                                </TableCell>
                                 <TableCell>
                                     <IconButton onClick={handleClick}>
                                         <MoreVertIcon />
@@ -115,19 +118,11 @@ const Container = ({ data }: ContainerProps) => {
                         <VisibilityIcon className='text-orange-500'/>
                         <div>{b("View")}</div>
                     </Button>
-                    <Button onClick={handleOpenModal} className='p-3 normal-case flex gap-2 w-full justify-start'>
-                        <EditIcon className='text-blue-500'/>
-                        <div>{b("Edit")}</div>
-                    </Button>
-                    <Button onClick={handleOpenDeleteModal} className='p-3 normal-case flex gap-2 w-full justify-start'>
-                        <DeleteIcon className='text-red-500'/>
-                        <div>{b("Delete")}</div>
-                    </Button>
                 </div>
             </Popover>
 
-            <AddEditUser isView={isView} open={openModal} handleClose={handleCloseModal} handleSave={handleSave} title={t(isView?"ViewDetail":"CreateUser")}/>
-            <DeleteUser title={t("DeleteUser")} open={openDeleteModal} handleClose={handleCloseModal} handleDelete={handleDelete} />
+            <ViewOrder isView={isView} open={openModal} handleClose={handleCloseModal} handleSave={handleSave} title={t(isView?"ViewDetail":"CreateOrder")}/>
+            {/* <DeleteUser title={t("DeleteUser")} open={openDeleteModal} handleClose={handleCloseModal} handleDelete={handleDelete} /> */}
         </div>
     )
 }

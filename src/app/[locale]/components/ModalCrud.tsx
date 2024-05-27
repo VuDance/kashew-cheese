@@ -9,10 +9,11 @@ interface ModalCrudProps {
   handleSave?:(data: any) => void,
   handleDelete?:(data: any) => void,
   title: string,
+  isView: boolean,
 }
 
 
-const ModalCrud = ({ handleClose, open,children,handleDelete ,handleSave,title}: ModalCrudProps) => {
+const ModalCrud = ({ handleClose, open,children,handleDelete ,handleSave,title,isView}: ModalCrudProps) => {
   const t=useTranslations("Button")
   return (
     <Modal
@@ -22,7 +23,7 @@ const ModalCrud = ({ handleClose, open,children,handleDelete ,handleSave,title}:
       aria-describedby="modal-modal-description"
     >
       <div className='flex justify-center items-center h-screen'>
-        <div className='bg-white max-h-[70vh] flex flex-col justify-between max-w-[80vw] p-5'>
+        <div className='bg-white flex flex-col justify-between max-w-[80vw] p-5'>
           <div>
             <div className='font-semibold text-lg border-b pb-3 mb-3'>{title}</div>
             {children}
@@ -30,7 +31,7 @@ const ModalCrud = ({ handleClose, open,children,handleDelete ,handleSave,title}:
           <div className='flex gap-3 justify-end pt-3 border-t mt-3'>
             <Button className='normal-case text-black' variant='outlined' onClick={handleClose}>{t("Cancel")}</Button>
             {handleDelete && <Button variant='outlined' className='text-white hover:bg-red-400 normal-case bg-red-500'>{t("Delete")}</Button>}
-            {handleSave && <Button variant='outlined' className='text-white normal-case hover:bg-blue-400 bg-blue-500'>{t("Create")}</Button>}
+            {handleSave && !isView && <Button variant='outlined' className='text-white normal-case hover:bg-blue-400 bg-blue-500'>{t("Create")}</Button>}
           </div>
         </div>
       </div>

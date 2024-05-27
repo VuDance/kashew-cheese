@@ -31,7 +31,35 @@
       "PhoneNumber":"Phone Number",
       "CreateUser":"Create User",
       "ViewDetail":"View Detail",
-      "DeleteUser":"Delete User"
+      "DeleteUser":"Delete User",
+      "ChooseRole":"Choose Role"
+    },
+    "ProductsManagement":{
+      "ProductsManagement":"Products Management",
+      "STT":"STT",
+      "Name":"Name",
+      "Image":"Image",
+      "Category":"Category",
+      "Price":"Price",
+      "ViewDetail":"View Detail",
+      "DeleteProduct":"Delete Product",
+      "ProductImage":"Product Image",
+      "ChooseImage":"Choose Image",
+      "ProductDetails":"Product Details",
+      "ProductName":"Product Name",
+      "ChooseCategory":"Choose Category",
+      "Quantity":"Quantity",
+      "Description":"Description",
+      "CreateProduct":"Create Product"
+    },
+    "OrdersManagement":{
+      "OrdersManagement":"Orders Management",
+      "ID": "ID",
+      "Name":"Name",
+      "Address":"Address",
+      "Status":"Status",
+      "Date":"Date",
+      "ViewDetail":"View Detail"
     },
     "Button":{
       "Search": "Search...",

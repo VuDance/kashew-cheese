@@ -11,6 +11,7 @@ interface AddEditUserProps {
     open: boolean,
     handleSave?: (data: any) => void,
     title: string,
+    isView: boolean
 }
 
 const fakeOption=[
@@ -24,7 +25,7 @@ const fakeOption=[
     },
 ]
 
-const AddEditUser = ({ title, open, handleSave, handleClose }: AddEditUserProps) => {
+const AddEditUser = ({ title, open, handleSave, handleClose,isView }: AddEditUserProps) => {
     const t=useTranslations("UsersManagement")
     const {
         control,
@@ -38,7 +39,7 @@ const AddEditUser = ({ title, open, handleSave, handleClose }: AddEditUserProps)
       })
       const onSubmit = (data:any) => console.log(data)
     return (
-        <ModalCrud title={title} open={open} handleSave={handleSave} handleClose={handleClose}>
+        <ModalCrud isView={isView} title={title} open={open} handleSave={handleSave} handleClose={handleClose}>
             <Grid container spacing={2} className='w-full pl-[16px]'>
                 <Grid item xs={6}>
                     <Controller
@@ -81,7 +82,7 @@ const AddEditUser = ({ title, open, handleSave, handleClose }: AddEditUserProps)
                         control={control}
                         name='firstName'
                         render={({ field: { onChange, onBlur, value } }) => (
-                             <SelectCustom option={fakeOption}/>
+                             <SelectCustom defaultValue={t("ChooseRole")} option={fakeOption}/>
                         )}
                     />
                 </Grid>
